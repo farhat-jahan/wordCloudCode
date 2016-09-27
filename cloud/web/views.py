@@ -9,6 +9,29 @@ from PIL import Image
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from .forms import UploadFileForm
+
+# Imaginary function to handle an uploaded file.
+#from somewhere import handle_uploaded_file
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        print "=======================form===", form
+        if form.is_valid():
+            print "valid======"
+            #handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('index_page')
+    else:
+        print "not post====="
+        form = UploadFileForm()
+    return render_to_response('inputform.html', {'form': form})
+
+
+
+
 
 def index_page(request):
    # dir_path=path.dirname(__file__)

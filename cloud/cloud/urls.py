@@ -7,5 +7,6 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^uploadfile/$', 'web.views.upload_file', name='upload_file'),
     url(r'^index/$', 'web.views.index_page', name='index_page'),
 ]
