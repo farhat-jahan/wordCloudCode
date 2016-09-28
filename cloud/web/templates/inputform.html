@@ -5,24 +5,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="{% url 'upload_file' %}" method="POST" autocomplete="off"
-		enctype="multipart/form-data" >
-		
-		<table id="regTable">
-			<tr>
-				<td class="left">Title</td>
-				<td class="left"><input type="text"></td>
-			</tr>
+	<form action="{% url "upload_file" %}" method="post"
+		enctype="multipart/form-data">
+		{{form}} <input type="submit" value="Upload" />
+	</form>
 
-			<tr>
-				<td class="left">File</td>
-				<td class="left"><input type="file"></td>
-			</tr>
-			<tr>
-				<td class="left"></td>
-				<td class="left"><input type="submit"></td>
-
-			</tr>
-			</form>
 </body>
 </html>
