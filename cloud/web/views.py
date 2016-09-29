@@ -18,7 +18,6 @@ from .forms import UploadFileForm
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
-        print form
         if form.is_valid():
             file_name  = request.FILES["file"]
             uploaded_image  = request.FILES["image"]
@@ -29,7 +28,7 @@ def upload_file(request):
     return render_to_response('inputform.html', {'form': form})
 
 def success(request):
-    return HttpResponse ("Waoooo here is the word cloud---> Thank you")
+    return HttpResponse ("Word Cloud is created...Thank you")
 
 def cloud_popup(file_name, uploaded_image):
     text = file_name.read()
@@ -39,7 +38,7 @@ def cloud_popup(file_name, uploaded_image):
 #     #print display_image
 #     print "//////"
     stopwords=set(STOPWORDS)
-    wc=WordCloud(background_color="white", max_words=2000, mask=display_image,
+    wc=WordCloud(background_color="black", max_words=2000, mask=display_image,
                    stopwords=stopwords.add("said"))
     wc.generate(text)
     plt.imshow(wc)
